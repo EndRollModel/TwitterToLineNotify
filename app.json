@@ -1,5 +1,10 @@
 {
   "name": "TwitterToLineNotify",
   "description": "Harp, the static web server with built-in preprocessing, makes Markdown, LESS, CoffeeScript as easy to use as HTML, CSS, and JavaScript.",
-  "repository": "https://github.com/EndRollModel/TwitterToLineNotify"
+  "repository": "https://github.com/EndRollModel/TwitterToLineNotify",
+  "env":{
+  	"NotifyToken":{
+  		"description":"請輸入你的LineNotifyToken"
+  	}
+  }
 }
