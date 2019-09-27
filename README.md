@@ -17,7 +17,7 @@ IFTTT With Twitter To LineNotify <br/>
 
 --------------------------------------------------
 
-1. 登入 LineNotify 申請一個權杖(token) 先將 Notify(機器人) 設定好群組與名稱
+1. 登入 LineNotify 申請一個權杖(token) 先將 Notify(機器人) 設定好群組與名稱 <br/>
 
 2. 按下此按鈕將專案匯入 並且將剛剛申請好的Token填入選項中 <br/> [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy) 
 
@@ -36,3 +36,8 @@ IF 選擇 Twitter -> New tweet from search 這裡輸入你想追蹤的推主/對
    * Body 填入 ```{"FirstLinkUrl":"{{FirstLinkUrl}}"}```
 
 --------------------------------------------------
+
+本程式使用以下套件
+[cheerio](https://github.com/cheeriojs/cheerio)
+[request](https://github.com/request/request)
+[express](https://www.npmjs.com/package/express)
