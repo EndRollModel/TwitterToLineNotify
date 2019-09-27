@@ -37,7 +37,7 @@ IF 選擇 Twitter -> New tweet from search 這裡輸入你想追蹤的推主/對
 
 --------------------------------------------------
 
-本程式使用以下套件
-[cheerio](https://github.com/cheeriojs/cheerio)
-[request](https://github.com/request/request)
-[express](https://www.npmjs.com/package/express)
+本程式使用以下套件<br/>
+* [cheerio](https://github.com/cheeriojs/cheerio)     <br/>
+* [request](https://github.com/request/request)       <br/>
+* [express](https://www.npmjs.com/package/express)    <br/>
