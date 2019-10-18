@@ -1,5 +1,5 @@
 // 引入套件
-const request = require('request'); // 網路連線用 主要用於post
+const request = require('request'); // 網路連線用 主要用於post/get
 const cheerio = require('cheerio'); // 爬取網頁資訊用
 const express = require('express'); // 網路通訊用 用於監聽port
 
@@ -17,6 +17,27 @@ const enterLine = '\r\n';
 
 // 檢查用開關 如果開啟 會在文章中偵測是否敏感內容 顯示此為敏感內容
 const sensitiveInspection = false;
+
+
+function checkUrl ( url ) {
+    return new Promise(function(resolve){
+        request({url ,method: 'GET'}, function(error, response, body){
+            if (error || !body) {
+                console.log(' 錯誤 : 網址/網頁取得錯誤 ');
+                return;
+            }
+            const $ = cheerio.load(body); // 載入 body
+            const defaultLink = $('link[hreflang=\'x-default\']'); // 預設網址 比對用
+            const checkUrl = defaultLink.eq(0).attr('href');
+            if(checkUrl.indexOf('instagram') > -1 || checkUrl.indexOf('twitter') > -1){
+                resolve(true);
+            }else{
+                resolve(false);
+            }
+        })
+    })
+}
+
 
 /**
  * get page info 取得頁面資訊
@@ -65,9 +86,13 @@ function getPageInfo( sourceURL, pushKey ) {
         if ( countResult['external'] !== null ) {
             if (countResult['external'].toString() !== countResult['url'].toString() &&
                 countResult['external'].toString() !== countResult['true_url'].toString()) {
-                console.log('偵測到內有網址 另外轉移');
-                getPageInfo(countResult['external'].toString(), pushKey);
-                return;
+                const getCheck = checkUrl(countResult['external']).then(function(check){
+                    if ( check ) {
+                        console.log('偵測到內有網址 另外轉移');
+                        getPageInfo(countResult['external'].toString(), pushKey);
+                        return;
+                    }
+                });
             }
         }
 
