@@ -34,7 +34,7 @@ IF 選擇 Twitter -> New tweet from search 這裡輸入你想追蹤的推主/對
    * URL 貼上 步驟2取得的 ``` herokuAPPurl ```
    * Method 選擇 ``` post ```
    * Content Type 選擇 ``` application/json ```
-   * Body 填入 ```{"FirstLinkUrl":"{{LinkToTweet}}"}```
+   * Body 填入 ```{"text": {{Text}},"LinkToTweet":{{LinkToTweet}}}```
 
 --------------------------------------------------
 
