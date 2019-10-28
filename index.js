@@ -18,7 +18,11 @@ const enterLine = '\r\n';
 // 檢查用開關 如果開啟 會在文章中偵測是否敏感內容 顯示此為敏感內容
 const sensitiveInspection = false;
 
-
+/**
+ * 若內文網址不是推特或是IG的情形下 拒絕讀取內容網址
+ * @param   url             傳入的網址
+ * @returns {Promise<any>}  是否為Ig或是twitter
+ */
 function checkUrl ( url ) {
     return new Promise(function(resolve){
         request({url ,method: 'GET'}, function(error, response, body){
@@ -177,7 +181,10 @@ app.use(express.urlencoded({extended: true})); // for parsing application/x-www-
  * 分析該文章內圖片與內容 若有媒體內容則抓取推送至token
  */
 app.post('/', (req, res)=>{
-    const bodyToken = req.body['NotifyToken'] === undefined ? defaultToken : req.body['NotifyToken'];
-    getPageInfo( req.body['FirstLinkUrl'], bodyToken );
-    res.json(req.body); // 回post的內容給發送者
+    const bodyText = req.body['text'] === undefined ? '' : req.body['text']; // 抓取
+    if(bodyText.indexOf('RT @') == -1){
+        const bodyToken = req.body['NotifyToken'] === undefined ? defaultToken : req.body['NotifyToken'];
+        getPageInfo( req.body['LinkToTweet'], bodyToken );
+        res.json(req.body); // 回post的內容給發送者
+    }
 });
