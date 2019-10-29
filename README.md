@@ -13,9 +13,10 @@ IFTTT With Twitter To LineNotify <br/>
 * **LineNotify帳號** https://notify-bot.line.me/zh_TW/               <br/>
 * **Twitter帳號** https://twitter.com                                <br/> 
 
+[圖文版教學](https://endroll.gitbook.io/sample/)
+
 *以下為教學流程*
 
-[圖文版教學](https://endroll.gitbook.io/sample/)
 --------------------------------------------------
 
 1. 登入 LineNotify 申請一個權杖(token) 先將 Notify(機器人) 設定好群組與名稱 <br/>
