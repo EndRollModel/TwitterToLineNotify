@@ -18,6 +18,9 @@ const enterLine = '\r\n';
 // 檢查用開關 如果開啟 會在文章中偵測是否敏感內容 顯示此為敏感內容
 const sensitiveInspection = false;
 
+// 是否接受轉推
+const isretwtter = true;
+
 /**
  * 若內文網址不是推特或是IG的情形下 拒絕讀取內容網址
  * @param   url             傳入的網址
@@ -182,9 +185,16 @@ app.use(express.urlencoded({extended: true})); // for parsing application/x-www-
  */
 app.post('/', (req, res)=>{
     const bodyText = req.body['text'] === undefined ? '' : req.body['text']; // 抓取
-    if(bodyText.indexOf('RT @') == -1){
+    
+    if(isretwtter){
         const bodyToken = req.body['NotifyToken'] === undefined ? defaultToken : req.body['NotifyToken'];
         getPageInfo( req.body['LinkToTweet'], bodyToken );
         res.json(req.body); // 回post的內容給發送者
+    }else{
+        if(bodyText.indexOf('RT @') == -1 ){
+            const bodyToken = req.body['NotifyToken'] === undefined ? defaultToken : req.body['NotifyToken'];
+            getPageInfo( req.body['LinkToTweet'], bodyToken );
+            res.json(req.body); // 回post的內容給發送者
+        }
     }
 });
