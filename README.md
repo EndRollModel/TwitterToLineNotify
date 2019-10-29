@@ -36,6 +36,8 @@ IF 選擇 Twitter -> New tweet from search 這裡輸入你想追蹤的推主/對
    * Method 選擇 ``` post ```
    * Content Type 選擇 ``` application/json ```
    * Body 填入 ```{"text": {{Text}},"LinkToTweet":{{LinkToTweet}}}```
+   
+6. 設定內有些可以自訂設定的東西 例如是否抓取轉推內容等可以設定
 
 --------------------------------------------------
 
