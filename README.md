@@ -1,4 +1,6 @@
-# TwitterToLineNotify
+# 2020/06/20 : update 由於目前推特 已經頁面已經改版 所以目前此功能已無效
+
+## TwitterToLineNotify
 IFTTT With Twitter To LineNotify <br/>
 
 從推特取得網址後經由Line的Notify通知圖片與推文的一個小工具
