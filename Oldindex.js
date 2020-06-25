@@ -2,6 +2,7 @@
 const request = require('request'); // 網路連線用 主要用於post/get
 const cheerio = require('cheerio'); // 爬取網頁資訊用
 const express = require('express'); // 網路通訊用 用於監聽port
+const config  = require('./config'); // 引用config
 
 // 宣告app
 const app = express();
@@ -19,7 +20,7 @@ const enterLine = '\r\n';
 const sensitiveInspection = false;
 
 // 是否接受轉推
-const isretwtter = true;
+const isRetwtter = true;
 
 /**
  * 若內文網址不是推特或是IG的情形下 拒絕讀取內容網址
@@ -186,7 +187,7 @@ app.use(express.urlencoded({extended: true})); // for parsing application/x-www-
 app.post('/', (req, res)=>{
     const bodyText = req.body['text'] === undefined ? '' : req.body['text']; // 抓取
     
-    if(isretwtter){
+    if(isRetwtter){
         const bodyToken = req.body['NotifyToken'] === undefined ? defaultToken : req.body['NotifyToken'];
         getPageInfo( req.body['LinkToTweet'], bodyToken );
         res.json(req.body); // 回post的內容給發送者
