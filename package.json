@@ -2,10 +2,9 @@
   "name": "twittertolinenotify",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "oldIndex.js",
   "scripts": {
-    "start": "node index",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node Server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +19,7 @@
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
+    "puppeteer": "^4.0.1",
     "request": "^2.88.0"
   }
 }
